@@ -4,6 +4,7 @@ import 'package:zaddaii/pages/adab-joula-page.dart';
 import 'package:zaddaii/pages/adab-mawm-page.dart';
 import 'package:zaddaii/pages/adab-taalim-page.dart';
 import 'package:zaddaii/pages/adab-taam-page.dart';
+import 'package:zaddaii/pages/hidayate-roujoue-page.dart';
 import 'package:zaddaii/pages/home.dart';
 import 'package:zaddaii/pages/maksed-fadila-page.dart';
 import 'package:zaddaii/pages/sifates-page.dart';
@@ -29,10 +30,13 @@ class Globalparams {
     },
     {'title': 'أدب الطّعام', 'icon': Icons.food_bank, 'route': '/adab-taam'},
     {'title': 'أدب النّوم', 'icon': Icons.bed_rounded, 'route': '/adab-nawm'},
-    {'title': 'check_circle', 'icon': Icons.book_online_outlined, 'route': '/'},
-    {'route': '/', 'title': 'check_circle', 'icon': Icons.book_online_rounded},
-    {'route': '/', 'title': 'check_circle', 'icon': Icons.book_online_sharp},
-    {'route': '/', 'title': 'check_circle', 'icon': Icons.book_outlined},
+    {
+      'title': 'هدايات الرّجوع',
+      'icon': Icons.arrow_back,
+      'route': '/hidayate-roujoue',
+    },
+    {'route': '/', 'title': 'check_circle', 'icon': Icons.exit_to_app},
+    {'route': '/', 'title': 'check_circle', 'icon': Icons.house_siding_sharp},
     {'route': '/', 'title': 'check_circle', 'icon': Icons.book_rounded},
     {
       'route': '/',
@@ -65,5 +69,6 @@ class Globalparams {
     '/adab-choura': (context) => AdabChouraPage(),
     '/adab-taam': (context) => AdabTaamPage(),
     '/adab-nawm': (context) => AdabNawmPage(),
+    '/hidayate-roujoue': (context) => HidayateRoujouePage(),
   };
 }

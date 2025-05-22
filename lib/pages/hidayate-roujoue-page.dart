@@ -4,15 +4,15 @@ import 'package:zaddaii/repository/sifates-repo.dart';
 import 'package:zaddaii/widgets/MyAppBar.dart';
 import 'package:zaddaii/widgets/jomla.dart';
 
-class AdabNawmPage extends StatelessWidget {
-  const AdabNawmPage({super.key});
+class HidayateRoujouePage extends StatelessWidget {
+  const HidayateRoujouePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: 'أدب النّوم'),
+      appBar: MyAppBar(title: 'هدايات الرّجوع'),
       body: FutureBuilder<dynamic>(
-        future: getData('adab-nawm'),
+        future: getData('hidayate-roujoue'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -26,7 +26,16 @@ class AdabNawmPage extends StatelessWidget {
               padding: PADDING,
               child: ListView(
                 children: [
-                  ...sifates.asMap().entries.map((entry) {
+                  Jomla(
+                    text: 'نلتزم بهذه الصّفات مع الأهل :',
+                    color: Colors.red,
+                  ),
+                  ...sifates['ahl'].asMap().entries.map((entry) {
+                    String item = entry.value;
+                    return Jomla(text: '${ICON} $item .');
+                  }),
+                  Jomla(text: 'نحافظ على الخمس أعمال :', color: Colors.red),
+                  ...sifates['aamal'].asMap().entries.map((entry) {
                     String item = entry.value;
                     return Jomla(text: '${ICON} $item .');
                   }),

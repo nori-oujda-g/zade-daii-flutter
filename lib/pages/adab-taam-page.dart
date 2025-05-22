@@ -12,7 +12,7 @@ class AdabTaamPage extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(title: 'أدب الطّعام'),
       body: FutureBuilder<dynamic>(
-        future: getData('adab-jawla'),
+        future: getData('adab-taam'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -26,19 +26,7 @@ class AdabTaamPage extends StatelessWidget {
               padding: PADDING,
               child: ListView(
                 children: [
-                  Jomla(text: 'المقصد من الطّعام :', color: Colors.red),
-                  ...sifates['makased'].asMap().entries.map((entry) {
-                    int index = entry.key;
-                    String item = entry.value;
-                    return Jomla(text: '${ICON} $item .');
-                  }),
-                  Jomla(text: 'أدب الطّعام :', color: Colors.red),
-                  ...sifates['adaab'].asMap().entries.map((entry) {
-                    String item = entry.value;
-                    return Jomla(text: '${ICON} $item .');
-                  }),
-                  Jomla(text: 'الفضل :', color: Colors.red),
-                  ...sifates['fadael'].asMap().entries.map((entry) {
+                  ...sifates.asMap().entries.map((entry) {
                     String item = entry.value;
                     return Jomla(text: '${ICON} $item .');
                   }),

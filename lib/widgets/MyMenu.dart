@@ -27,10 +27,18 @@ class MyMenu extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/favicon.png'),
-                    radius: 50,
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/images/favicon.png',
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.cover, // Très important !
+                    ),
                   ),
+                  // CircleAvatar(
+                  //   backgroundImage: AssetImage('assets/images/favicon.png'),
+                  //   radius: 100,
+                  // ),
                 ],
               ),
             ),

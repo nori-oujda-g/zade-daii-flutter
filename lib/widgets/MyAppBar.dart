@@ -10,7 +10,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: DEFAULT_WHITE_FOREGROUND),
       backgroundColor: DEFAULT_BACKGROUND,
       // title: Text(title!, style: TextStyle(color: Colors.white)),
       title: Jomla(text: title, color: color ?? DEFAULT_WHITE_FOREGROUND),

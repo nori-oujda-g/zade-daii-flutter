@@ -2,7 +2,19 @@ import 'package:flutter/material.dart';
 
 const String GLOBAL_TITLE = 'زاد الدّاعي';
 const Color DEFAULT_BACKGROUND = Color.fromRGBO(16, 68, 12, 1);
-const Color DEFAULT_WHITE_FOREGROUND = Color.fromRGBO(250, 250, 200, 1);
+const Color DEFAULT_WHITE_FOREGROUND = Color.fromRGBO(
+  226,
+  221,
+  155,
+  1,
+); //yellow white
+const Color DEFAULT_GOLD_FOREGROUND = Color.fromRGBO(
+  249,
+  175,
+  0,
+  1,
+); //yellow gold
+// const Color DEFAULT_WHITE_FOREGROUND = Color.fromRGBO(250, 250, 200, 1);//white
 const String ICON = '🧩';
 const EdgeInsets PADDING = EdgeInsets.fromLTRB(0, 10, 8, 10);
 final ButtonStyle BUTTON_STYLE = ElevatedButton.styleFrom(

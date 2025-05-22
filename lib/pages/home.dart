@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
         child: Jomla(
           text:
               'وَمَنْ أَحْسَنُ قَوْلًا مِّمَّن دَعَا إِلَى اللَّهِ وَعَمِلَ صَالِحًا وَقَالَ إِنَّنِي مِنَ الْمُسْلِمِينَ',
-          color: Color.fromRGBO(33, 75, 30, 1),
+          color: DEFAULT_BACKGROUND,
           textAlign: TextAlign.center,
           fontSize: 25,
         ),
