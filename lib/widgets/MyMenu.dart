@@ -8,8 +8,8 @@ class MyMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.blue,
-      shadowColor: Colors.amber,
+      backgroundColor: DEFAULT_BACKGROUND,
+      shadowColor: DEFAULT_WHITE_FOREGROUND,
       semanticLabel: 'zzzaaa',
       child: ListView(
         children: [

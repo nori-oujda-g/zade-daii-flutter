@@ -12,7 +12,7 @@ class MaksedFadilaPage extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(title: 'المقاصد و الفضائل'),
       body: FutureBuilder<dynamic>(
-        future: getSifates(),
+        future: getData('sifates'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -22,49 +22,52 @@ class MaksedFadilaPage extends StatelessWidget {
             return const Center(child: Text('Aucun élément trouvé.'));
           } else {
             final maksedFadila = snapshot.data!;
-            return Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: maksedFadila['maksed-fadila'].length + 1,
-                    itemBuilder: (context, index) {
-                      if (index < maksedFadila['maksed-fadila'].length) {
-                        final sifat =
-                            maksedFadila['maksed-fadila'][index]['sifat'];
-                        final maksed =
-                            maksedFadila['maksed-fadila'][index]['maksed'];
-                        final fadila =
-                            maksedFadila['maksed-fadila'][index]['fadila'];
-                        final deg = 140;
-                        return Align(
-                          alignment: Alignment.topRight,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Jomla(
-                                text: '$sifat :',
-                                color: Color.fromRGBO(0, 0, deg, 1),
-                              ),
-                              Jomla(
-                                text: 'المقصد: $maksed .',
-                                color: Color.fromRGBO(deg, 0, 0, 1),
-                              ),
-                              Jomla(
-                                text:
-                                    'الفضيلة: قَالَ رَسُولُ اللَّهِ ﷺ: ( ${fadila} ) .',
-                                color: Color.fromRGBO(0, deg, 0, 1),
-                              ),
-                              Divider(color: DEFAULT_BACKGROUND, height: 1),
-                            ],
-                          ),
-                        );
-                      } else {
-                        return Jomla(text: maksedFadila['tachkile']);
-                      }
-                    },
+            return Padding(
+              padding: PADDING,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: maksedFadila['maksed-fadila'].length + 1,
+                      itemBuilder: (context, index) {
+                        if (index < maksedFadila['maksed-fadila'].length) {
+                          final sifat =
+                              maksedFadila['maksed-fadila'][index]['sifat'];
+                          final maksed =
+                              maksedFadila['maksed-fadila'][index]['maksed'];
+                          final fadila =
+                              maksedFadila['maksed-fadila'][index]['fadila'];
+                          final deg = 140;
+                          return Align(
+                            alignment: Alignment.topRight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Jomla(
+                                  text: '$sifat :',
+                                  color: Color.fromRGBO(0, 0, deg, 1),
+                                ),
+                                Jomla(
+                                  text: 'المقصد: $maksed .',
+                                  color: Color.fromRGBO(deg, 0, 0, 1),
+                                ),
+                                Jomla(
+                                  text:
+                                      'الفضيلة: قَالَ رَسُولُ اللَّهِ ﷺ: ( ${fadila} ) .',
+                                  color: Color.fromRGBO(0, deg, 0, 1),
+                                ),
+                                Divider(color: DEFAULT_BACKGROUND, height: 1),
+                              ],
+                            ),
+                          );
+                        } else {
+                          return Jomla(text: maksedFadila['tachkile']);
+                        }
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           }
         },
