@@ -10,7 +10,7 @@ class MyMenu extends StatelessWidget {
     return Drawer(
       backgroundColor: DEFAULT_BACKGROUND,
       shadowColor: DEFAULT_WHITE_FOREGROUND,
-      semanticLabel: 'zzzaaa',
+      semanticLabel: 'zaaddaii',
       child: ListView(
         children: [
           DrawerHeader(
@@ -18,38 +18,40 @@ class MyMenu extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   DEFAULT_BACKGROUND,
-                  DEFAULT_WHITE_FOREGROUND,
+                  const Color.fromARGB(255, 53, 216, 12),
                   DEFAULT_BACKGROUND,
                 ],
               ),
             ),
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Image.asset(
-                      'assets/images/favicon.png',
-                      width: 200,
-                      height: 200,
-                      fit: BoxFit.cover, // Très important !
-                    ),
-                  ),
-                  // CircleAvatar(
-                  //   backgroundImage: AssetImage('assets/images/favicon.png'),
-                  //   radius: 100,
-                  // ),
-                ],
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/favicon.png',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-          ...(Globalparams.menu).map(
-            (item) => ColumnMenu(
-              title: item['title'],
-              icon: item['icon'],
-              route: item['route'],
-            ),
-          ),
+          // ...(Globalparams.menu).map(
+          //   (item) => ColumnMenu(
+          //     title: '${item['title']}',
+          //     icon: item['icon'],
+          //     route: item['route'],
+          //     index: 2,
+          //     max: 33,
+          //   ),
+          // ),
+          ...(Globalparams.menu).asMap().entries.map((entry) {
+            return ColumnMenu(
+              title: '${entry.value['title']} ',
+              icon: entry.value['icon'],
+              route: entry.value['route'],
+              index: entry.key,
+              max: (Globalparams.menu).length,
+            );
+          }),
         ],
       ),
     );
@@ -60,7 +62,8 @@ class MyDivider extends StatelessWidget {
   const MyDivider({super.key});
   @override
   Widget build(BuildContext context) {
-    return Divider(height: 1, color: DEFAULT_WHITE_FOREGROUND);
+    return Divider(height: 1, color: const Color.fromARGB(255, 21, 97, 15));
+    // return Divider(height: 1, color: DEFAULT_WHITE_FOREGROUND);
   }
 }
 
@@ -68,11 +71,15 @@ class ColumnMenu extends StatelessWidget {
   final String title;
   final IconData icon;
   final String route;
+  final int index;
+  final int max;
   const ColumnMenu({
     super.key,
     required this.title,
     required this.icon,
     required this.route,
+    required this.index,
+    required this.max,
   });
   void getPage(BuildContext context, String page) {
     Navigator.of(context).pop();
@@ -84,13 +91,12 @@ class ColumnMenu extends StatelessWidget {
     return Column(
       children: [
         ListTile(
-          // title: Text(title, style: TextStyle(fontSize: 22)),
           title: Jomla(text: title, color: DEFAULT_WHITE_FOREGROUND),
           leading: Icon(icon, color: DEFAULT_WHITE_FOREGROUND),
           trailing: Icon(Icons.arrow_right, color: DEFAULT_WHITE_FOREGROUND),
           onTap: () => {getPage(context, route)},
         ),
-        MyDivider(),
+        if (index < max - 1) MyDivider(),
       ],
     );
   }

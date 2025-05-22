@@ -14,8 +14,8 @@ class Jomla extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
         child: Text(
-          textAlign: textAlign ?? TextAlign.right,
           text!,
+          textAlign: textAlign ?? TextAlign.right,
           style: TextStyle(
             fontSize: fontSize ?? 18,
             fontFamily: 'Cairo', // 👈 police arabe (si ajoutée)
